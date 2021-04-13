@@ -1,0 +1,24 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "C:\\Users\\duvut\\Documents\\CODE\\sample\\InvoiceRecognitionClinet\\server\\logs\\.7f4973b9661c0ee862babb09ad9370bb034fc6c4-audit.json",
+    "files": [
+        {
+            "date": 1617943098700,
+            "name": "C:\\Users\\duvut\\Documents\\CODE\\sample\\InvoiceRecognitionClinet\\server\\logs\\KyodoServer-2021-04-09.log",
+            "hash": "f35e30f2bd64751e170ec0e1d81f1509"
+        },
+        {
+            "date": 1618195576525,
+            "name": "C:\\Users\\duvut\\Documents\\CODE\\sample\\InvoiceRecognitionClinet\\server\\logs\\KyodoServer-2021-04-12.log",
+            "hash": "176e5436dec43c11c2051cce8c3c7937"
+        },
+        {
+            "date": 1618280276444,
+            "name": "C:\\Users\\duvut\\Documents\\CODE\\sample\\InvoiceRecognitionClinet\\server\\logs\\KyodoServer-2021-04-13.log",
+            "hash": "540ad2790d8b45062a257b52e8620d8c"
+        }
+    ]
+}

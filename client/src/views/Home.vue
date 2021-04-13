@@ -1,0 +1,61 @@
+
+<template>
+  <div class="container-fluid" ref="container">
+    <br/>
+    <Header />
+    <br />
+    <Upload @sendFile="onSendfile" />
+    <br />
+    <DisplayResult :tableInfo.sync="items" />
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import Loading from 'vue-loading-overlay'
+import Upload from '../components/Upload.vue'
+import Header from '../components/Header.vue'
+import DisplayResult from '../components/DisplayResult.vue'
+import ProcessService from '../services/process.services'
+import { TableObject } from '../models/tables'
+import 'vue-loading-overlay/dist/vue-loading.css'
+
+const processServer = new ProcessService()
+
+Vue.use(Loading)
+@Component({
+  components: {
+    Header,
+    Upload,
+    DisplayResult
+  }
+})
+export default class Home extends Vue {
+  items: TableObject[] = []
+
+  constructor () {
+    super()
+    this.getItems()
+  }
+
+  onSendfile (files: any) : void {
+    const loader = this.$loading.show({
+      container: this.$refs.container,
+      canCancel: false
+    })
+    processServer.upload(files).then(res => {
+      console.log(res)
+      if (res.status === 'success') {
+        loader.hide()
+      }
+    })
+  }
+
+  getItems (): TableObject[] {
+    processServer.results().then(res => {
+      Array.from(res)
+    })
+    return []
+  }
+}
+</script>
