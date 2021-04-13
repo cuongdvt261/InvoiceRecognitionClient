@@ -35,7 +35,7 @@ export default class Home extends Vue {
 
   constructor () {
     super()
-    this.getItems()
+    this.refresh()
   }
 
   onSendfile (files: any) : void {
@@ -44,16 +44,17 @@ export default class Home extends Vue {
       canCancel: false
     })
     processServer.upload(files).then(res => {
-      console.log(res)
-      if (res.status === 'success') {
+      console.log(res.result.ok)
+      if (res.result.ok === 1) {
         loader.hide()
+        this.refresh()
       }
     })
   }
 
-  getItems (): TableObject[] {
+  refresh (): TableObject[] {
     processServer.results().then(res => {
-      Array.from(res)
+      this.items = Array.from(res) as TableObject[]
     })
     return []
   }

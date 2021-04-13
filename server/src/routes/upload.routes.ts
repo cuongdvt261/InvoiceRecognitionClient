@@ -1,19 +1,19 @@
 import bodyParser from 'body-parser';
 import express from 'express';
-import multer from "multer";
-import cors from "cors";
+import multer from 'multer';
+import cors from 'cors';
 import HttpStatus from 'http-status-codes';
 
-import { InvoiceRecognitionController } from "../controllers/recognition.controller";
-import { Logger } from '../lib/logger.lib';
+import {InvoiceRecognitionController} from '../controllers/recognition.controller';
+import {Logger} from '../lib/logger.lib';
 
 class UploadRoute {
-  private multer: multer.Multer;
+  private readonly multer: multer.Multer;
   public express: express.Application;
 
   constructor() {
     this.express = express();
-    this.multer = multer({ storage: this.store() })
+    this.multer = multer({storage: this.store()});
     this.middleware();
     this.routes();
   }
@@ -21,19 +21,19 @@ class UploadRoute {
   // Configure Express middleware.
   private middleware(): void {
     this.express.use(bodyParser.json());
-    this.express.use(bodyParser.urlencoded({ extended: false }));
-    this.express.use(cors())
+    this.express.use(bodyParser.urlencoded({extended: false}));
+    this.express.use(cors());
   }
 
   private store(): multer.StorageEngine {
     return multer.diskStorage({
-      destination: function (req, file, cb) {
-        cb(null, process.env.HOME_DIR || 'uploads/')
+      destination(req, file, cb) {
+        cb(null, process.env.HOME_DIR || 'uploads/');
       },
-      filename: function (req, file, cb) {
+      filename(req, file, cb) {
         cb(null, file.originalname);
-      }
-    })
+      },
+    });
   }
 
   private routes(): void {
@@ -54,16 +54,20 @@ class UploadRoute {
 
         // Handle file input
         controller.post(req, res)
-        .then(() => {})
-        .catch(err => { Logger.getInstance().error(err) })
-      })
+          .then(() => {})
+          .catch((err) => {
+            Logger.getInstance().error(err);
+          });
+      });
     });
 
     // Get all results
     this.express.get('/results', (req, res, next) => {
       controller.get(req, res)
-      .then(() => {})
-      .catch(err => { Logger.getInstance().error(err) })
+        .then(() => {})
+        .catch((err) => {
+          Logger.getInstance().error(err);
+        });
     });
   }
 }

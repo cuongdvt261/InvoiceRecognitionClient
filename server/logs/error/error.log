@@ -1,0 +1,10 @@
+2021-04-13 21:05:17 - ERROR: MongoNetworkError: failed to connect to server [localhost:27017] on first connect [Error: connect ECONNREFUSED 127.0.0.1:27017
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1145:16) {
+  name: 'MongoNetworkError'
+}] 
+2021-04-13 21:05:17 - ERROR: no db found 
+2021-04-13 21:16:26 - ERROR: MongoNetworkError: failed to connect to server [localhost:27017] on first connect [Error: connect ECONNREFUSED 127.0.0.1:27017
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1145:16) {
+  name: 'MongoNetworkError'
+}] 
+2021-04-13 21:16:26 - ERROR: no db found 

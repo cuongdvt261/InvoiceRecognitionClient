@@ -92,3 +92,70 @@
 2021-04-13 17:31:58 - INFO: getting db InvoiceRecognition 
 2021-04-13 17:32:04 - INFO: Connectiong to mongodb://localhost:27017 
 2021-04-13 17:32:04 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:03:38 - INFO: Listening on port 3000 
+2021-04-13 21:05:17 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:05:17 - ERROR: MongoNetworkError: failed to connect to server [localhost:27017] on first connect [Error: connect ECONNREFUSED 127.0.0.1:27017
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1145:16) {
+  name: 'MongoNetworkError'
+}] 
+2021-04-13 21:05:17 - ERROR: no db found 
+2021-04-13 21:16:26 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:16:26 - ERROR: MongoNetworkError: failed to connect to server [localhost:27017] on first connect [Error: connect ECONNREFUSED 127.0.0.1:27017
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1145:16) {
+  name: 'MongoNetworkError'
+}] 
+2021-04-13 21:16:26 - ERROR: no db found 
+2021-04-13 21:17:41 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:17:41 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:17:53 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:17:53 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:18:07 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:18:07 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:18:32 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:18:32 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:18:56 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:18:56 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:26:08 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:26:08 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:26:27 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:26:27 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:26:38 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:26:38 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:26:44 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:26:44 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:27:05 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:27:05 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:27:09 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:27:09 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:27:15 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:27:15 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:27:32 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:27:32 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:27:40 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:27:40 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:27:47 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:27:47 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:28:00 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:28:00 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:28:07 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:28:07 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:28:15 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:28:15 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:28:15 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:28:15 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:38:01 - INFO: Connectiong to mongodb://localhost:27017 
+2021-04-13 21:38:01 - INFO: getting db InvoiceRecognition 
+2021-04-13 21:43:21 - INFO: Listening on port 3000 
+2021-04-13 21:47:27 - INFO: Listening on port 3000 
+2021-04-13 22:08:02 - INFO: Listening on port 3000 
+2021-04-13 22:08:11 - INFO: Listening on port 3000 
+2021-04-13 22:09:40 - INFO: Listening on port 3000 
+2021-04-13 22:15:39 - INFO: Listening on port 3000 
+2021-04-13 22:15:49 - INFO: Listening on port 3000 
+2021-04-13 22:16:06 - INFO: Listening on port 3000 
+2021-04-13 22:16:27 - INFO: Listening on port 3000 
+2021-04-13 22:16:34 - INFO: Listening on port 3000 
+2021-04-13 22:30:54 - INFO: Listening on port 3000 
+2021-04-13 22:31:32 - INFO: Listening on port 3000 
+2021-04-13 22:36:02 - INFO: Listening on port 3000 
+2021-04-13 22:36:45 - INFO: Listening on port 3000 

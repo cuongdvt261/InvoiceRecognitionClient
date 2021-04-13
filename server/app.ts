@@ -1,9 +1,10 @@
 import bodyParser from 'body-parser';
 import express from 'express';
-import dotenv from "dotenv";
-dotenv.config({ path: __dirname + '/.env' })
+import dotenv from 'dotenv';
 
 import Routes from './src/routes/routes';
+
+dotenv.config({path: `${__dirname}/.env`});
 
 class App {
 

@@ -44,6 +44,7 @@
     "http": "^0.0.1-security",
     "http-status-codes": "^2.1.4",
     "moment": "^2.29.1",
+    "mongo-autoincrement": "^1.0.1",
     "mongodb": "^3.6.6",
     "multer": "^1.4.2",
     "path": "^0.12.7",
