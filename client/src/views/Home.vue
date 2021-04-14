@@ -16,7 +16,7 @@ import Loading from 'vue-loading-overlay'
 import Upload from '../components/Upload.vue'
 import Header from '../components/Header.vue'
 import DisplayResult from '../components/DisplayResult.vue'
-import ProcessService from '../services/process.services'
+import ProcessService from '../services/process.service'
 import { TableObject } from '../models/tables'
 import 'vue-loading-overlay/dist/vue-loading.css'
 
@@ -44,7 +44,6 @@ export default class Home extends Vue {
       canCancel: false
     })
     processServer.upload(files).then(res => {
-      console.log(res.result.ok)
       if (res.result.ok === 1) {
         loader.hide()
         this.refresh()

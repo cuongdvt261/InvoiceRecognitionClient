@@ -1,0 +1,55 @@
+p {
+  line-height: 1rem;
+}
+
+.card {
+  padding: 20px;
+}
+
+.form-group {
+  input {
+    margin-bottom: 20px;
+  }
+}
+
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.error {
+  animation-name: errorShake;
+  animation-duration: 0.3s;
+}
+
+@keyframes errorShake {
+  0% {
+    transform: translateX(-25px);
+  }
+  25% {
+    transform: translateX(25px);
+  }
+  50% {
+    transform: translateX(-25px);
+  }
+  75% {
+    transform: translateX(25px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
