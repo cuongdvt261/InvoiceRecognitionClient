@@ -1,6 +1,6 @@
 'use strict';
 
-import {CommonHelper} from '../helper/common.helper';
+import { CommonHelper } from '../helper/common.helper';
 
 const defaults = {
   server: {

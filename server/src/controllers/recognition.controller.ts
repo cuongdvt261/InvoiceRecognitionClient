@@ -2,11 +2,11 @@ import HttpStatus from 'http-status-codes';
 import path from 'path';
 import moment from 'moment';
 import autoIncrement from 'mongo-autoincrement';
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 
-import {MongoDb} from '../db/mongo.db';
+import { MongoDb } from '../db/mongo.db';
 
-import {IController} from './controller.interface';
+import { IController } from './controller.interface';
 
 export class InvoiceRecognitionController implements IController {
   public delete(req: Request, res: Response) {
@@ -30,7 +30,7 @@ export class InvoiceRecognitionController implements IController {
             res.json(err);
             res.statusCode = HttpStatus.BAD_REQUEST;
           }
-          res.send({result: docs});
+          res.send({ result: docs });
           res.statusCode = HttpStatus.OK;
         });
     }
@@ -60,7 +60,7 @@ export class InvoiceRecognitionController implements IController {
           res.statusCode = HttpStatus.OK;
         });
     } else {
-      res.json({msg: 'could not connect to db'});
+      res.json({ msg: 'could not connect to db' });
       res.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
     }
   }

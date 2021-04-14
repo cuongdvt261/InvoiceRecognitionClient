@@ -1,7 +1,8 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 
-import UploadRoute from './upload.routes';
+import UploadRoute from './upload.route';
+import UserRoute from "@/routes/user.route";
 
 class Routes {
   public express: express.Application;
@@ -18,7 +19,8 @@ class Routes {
   }
 
   private routes(): void {
-    this.express.use('/', UploadRoute);
+    // this.express.use('/', UploadRoute);
+    this.express.use('/user', UserRoute);
   }
 }
 

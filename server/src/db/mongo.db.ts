@@ -1,6 +1,6 @@
-import {Db, MongoClient} from 'mongodb';
+import { Db, MongoClient } from 'mongodb';
 
-import {Logger} from '../lib/logger.lib';
+import { Logger } from '../lib/logger.lib';
 
 export class MongoDb {
   private client: MongoClient | undefined;
@@ -22,7 +22,7 @@ export class MongoDb {
   public async connect() {
     try {
       if (!this.client) {
-        this.client = await MongoClient.connect(this.connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+        this.client = await MongoClient.connect(this.connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
       }
     } catch (err) {
       Logger.getInstance().error(err);
