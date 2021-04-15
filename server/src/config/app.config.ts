@@ -16,6 +16,7 @@ const appConfig = {
   server: {
     port: CommonHelper.normalizePort(process.env.SERVER_PORT || defaults.server.port),
   },
+  privateKey: 'FsgvPuR2lr'
 };
 
 export default appConfig;

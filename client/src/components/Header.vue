@@ -1,5 +1,6 @@
 <template>
     <div class="header">
+
       <b-img
         :src="require('@/assets/images/anlab_logo.png')"
         fluid

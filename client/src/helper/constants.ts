@@ -14,5 +14,6 @@ export default {
   TAG_PASSWORD: 'password',
   TAG_GROUP: 'group',
   TAG_DESCRIPTION: 'Description',
+  TAG_NAME: 'name',
   TAG_USERS: 'users'
 }

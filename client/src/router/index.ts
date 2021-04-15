@@ -1,22 +1,26 @@
 import store from '@/store'
 import Vue from 'vue'
 import VueRouter, { NavigationGuardNext, Route, RouteConfig } from 'vue-router'
+
 import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
 
-const ifAuthenticated = (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
-  if (to.path !== '/login') {
-    next('/login')
-  } else {
-    const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
-
-    // If a route with a title was found, set the document (page) title to that value.
-    if (nearestWithTitle) {
-      document.title = nearestWithTitle.meta.title
-    }
+const ifNotAuthenticated = (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
+  if (!store.getters.isAuthenticated) {
     next()
+    return
   }
+  next('/')
+}
+
+const ifAuthenticated = (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
+  if (store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/login')
 }
 
 const routes: Array<RouteConfig> = [
@@ -31,7 +35,8 @@ const routes: Array<RouteConfig> = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/Login.vue'),
+    component: Login,
+    beforeEnter: ifNotAuthenticated,
     meta: {
       title: 'Login Page - Invoice Recognation System'
     }
@@ -44,8 +49,8 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  ifAuthenticated(to, from, next)
-})
+// router.beforeEach((to, from, next) => {
+//   ifAuthenticated(to, from, next)
+// })
 
 export default router

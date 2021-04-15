@@ -4,9 +4,9 @@ import cors from 'cors';
 import HttpStatus from 'http-status-codes';
 
 import { Logger } from '../lib/logger.lib';
-import { UserController } from '@/controllers/user.controller';
+import { AuthController } from '@/controllers/auth.controller';
 
-class UserRoute {
+class AuthRoute {
   public express: express.Application;
 
   constructor() {
@@ -23,9 +23,9 @@ class UserRoute {
   }
 
   private routes(): void {
-    const controller = new UserController();
+    const controller = new AuthController();
 
-    this.express.post('/register', (req, res, next) => {
+    this.express.post('/', (req, res, next) => {
       controller.post(req, res)
         .then()
         .catch(err => {
@@ -35,4 +35,4 @@ class UserRoute {
   }
 }
 
-export default new UserRoute().express;
+export default new AuthRoute().express;
