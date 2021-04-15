@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import express from 'express';
 
 import db from '@/models/';
-import UploadRoute from './upload.route';
+import RegconiteRoute from "@/routes/recognite.route";
 import UserRoute from "@/routes/user.route";
 import AuthRoute from "@/routes/auth.route";
 
@@ -24,7 +24,7 @@ class Routes {
   }
 
   private routes(): void {
-    // this.express.use('/', UploadRoute);
+    this.express.use('/recognite', RegconiteRoute);
     this.express.use('/user', UserRoute);
     this.express.use('/auth', AuthRoute);
   }

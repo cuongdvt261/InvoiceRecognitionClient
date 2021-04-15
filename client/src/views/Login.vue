@@ -41,10 +41,9 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import store from '../store'
+import { AUTH_REQUEST_ACTION } from '../store/actions/auth'
+import { USER_REGISTER_ACTION } from '../store/actions/user'
 import router from '../router'
-import { AUTH_REQUEST_ACTION } from '@/store/actions/auth'
-import { USER_REGISTER_ACTION } from '@/store/actions/user'
 
 @Component
 export default class Login extends Vue {
@@ -57,23 +56,27 @@ export default class Login extends Vue {
   confirmReg = ''
   nameReg = ''
 
+  constructor () {
+    super()
+    console.log(this.$router)
+  }
+
   doLogin () : void {
     if (this.user === '' || this.password === '') {
       this.emptyFields = true
     } else {
-      store.dispatch(AUTH_REQUEST_ACTION, { username: this.user, password: this.password }).then(() => {
-        router.push('/')
+      this.$store.dispatch(AUTH_REQUEST_ACTION, { username: this.user, password: this.password }).then(() => {
+        this.$router.push({ path: '/' })
       })
     }
-    // localStorage.removeItem('userSessionInfo')
   }
 
   doRegister () {
     if (this.userReg === '' || this.passwordReg === '' || this.confirmReg === '') {
       this.emptyFields = true
     } else {
-      store.dispatch(USER_REGISTER_ACTION, { username: this.userReg, password: this.passwordReg, name: this.nameReg }).then(() => {
-        router.push('/')
+      this.$store.dispatch(USER_REGISTER_ACTION, { username: this.userReg, password: this.passwordReg, name: this.nameReg }).then(() => {
+        this.$router.push({ path: '/' })
       })
     }
   }

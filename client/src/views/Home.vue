@@ -52,9 +52,9 @@ export default class Home extends Vue {
   }
 
   refresh (): TableObject[] {
-    processServer.results().then(res => {
-      this.items = Array.from(res) as TableObject[]
-    })
+    // processServer.results().then(res => {
+    //   this.items = Array.from(res) as TableObject[]
+    // })
     return []
   }
 }

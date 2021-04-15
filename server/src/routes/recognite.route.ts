@@ -4,16 +4,16 @@ import multer from 'multer';
 import cors from 'cors';
 import HttpStatus from 'http-status-codes';
 
-import {InvoiceRecognitionController} from '../controllers/recognition.controller';
-import {Logger} from '../lib/logger.lib';
+import { InvoiceRecognitionController } from '../controllers/recognition.controller';
+import { Logger } from '../lib/logger.lib';
 
-class UploadRoute {
+class RecogniteRoute {
   private readonly multer: multer.Multer;
   public express: express.Application;
 
   constructor() {
     this.express = express();
-    this.multer = multer({storage: this.store()});
+    this.multer = multer({ storage: this.store() });
     this.middleware();
     this.routes();
   }
@@ -21,7 +21,7 @@ class UploadRoute {
   // Configure Express middleware.
   private middleware(): void {
     this.express.use(bodyParser.json());
-    this.express.use(bodyParser.urlencoded({extended: false}));
+    this.express.use(bodyParser.urlencoded({ extended: false }));
     this.express.use(cors());
   }
 
@@ -54,7 +54,7 @@ class UploadRoute {
 
         // Handle file input
         controller.post(req, res)
-          .then(() => {})
+          .then(() => { })
           .catch((err) => {
             Logger.getInstance().error(err);
           });
@@ -64,7 +64,7 @@ class UploadRoute {
     // Get all results
     this.express.get('/results', (req, res, next) => {
       controller.get(req, res)
-        .then(() => {})
+        .then(() => { })
         .catch((err) => {
           Logger.getInstance().error(err);
         });
@@ -72,4 +72,4 @@ class UploadRoute {
   }
 }
 
-export default new UploadRoute().express;
+export default new RecogniteRoute().express;

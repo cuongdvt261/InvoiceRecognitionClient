@@ -65,11 +65,11 @@ export default class AuthModule extends VuexModule {
     localStorage.removeItem('userSessionInfo')
   }
 
-  get isAuthenticated () {
+  get isAuthenticated (): boolean {
     return !!this.token
   }
 
-  get authStatus () {
+  get authStatus (): string {
     return this.status
   }
 }

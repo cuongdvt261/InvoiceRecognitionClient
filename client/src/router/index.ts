@@ -4,26 +4,26 @@ import VueRouter, { NavigationGuardNext, Route, RouteConfig } from 'vue-router'
 
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
+import About from '@/views/About.vue'
 
 Vue.use(VueRouter)
 
-const ifNotAuthenticated = (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
-  if (!store.getters.isAuthenticated) {
-    next()
-    return
-  }
-  next('/')
-}
-
 const ifAuthenticated = (to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
-  if (store.getters.isAuthenticated) {
+  if (to.path !== '/login' && !store.getters.isAuthenticated) {
+    next('/login')
+  } else if (to.path === '/login' && store.getters.isAuthenticated) {
+    next('/about')
+  } else {
+    const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
+    if (nearestWithTitle) document.title = nearestWithTitle.meta.title
     next()
-    return
   }
-  next('/login')
 }
 
 const routes: Array<RouteConfig> = [
+  {
+    path: '*'
+  },
   {
     path: '/',
     name: 'Home',
@@ -36,9 +36,16 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'Login',
     component: Login,
-    beforeEnter: ifNotAuthenticated,
     meta: {
       title: 'Login Page - Invoice Recognation System'
+    }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+    meta: {
+      title: 'About Page - Invoice Recognation System'
     }
   }
 ]
@@ -49,8 +56,8 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   ifAuthenticated(to, from, next)
-// })
+router.beforeEach((to, from, next) => {
+  ifAuthenticated(to, from, next)
+})
 
 export default router

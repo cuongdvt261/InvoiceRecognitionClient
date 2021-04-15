@@ -10,7 +10,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-
+// localStorage.removeItem('userSessionInfo')
+console.log('userSessionInfo: ' + localStorage.getItem('userSessionInfo'))
 new Vue({
   router,
   store,
