@@ -8,3 +8,54 @@
   name: 'MongoNetworkError'
 }] 
 2021-04-13 21:16:26 - ERROR: no db found 
+2021-04-16 10:14:31 - ERROR: TypeError: Cannot read property 'toString' of undefined 
+2021-04-16 10:16:04 - ERROR: TypeError: Cannot read property 'toString' of undefined 
+2021-04-16 10:17:15 - ERROR: TypeError: Cannot read property 'toString' of undefined 
+2021-04-16 10:18:04 - ERROR: TypeError: Cannot read property 'toString' of undefined 
+2021-04-16 10:18:24 - ERROR: TypeError: Cannot read property 'toString' of undefined 
+2021-04-16 10:25:52 - ERROR: Error: Expected a stream 
+2021-04-16 12:12:09 - ERROR: JsonWebTokenError: jwt malformed 
+2021-04-16 12:12:09 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_3505941_L2.jpg_20210416121209' 
+2021-04-16 13:54:53 - ERROR: Error: WHERE parameter "Username" has invalid "undefined" value 
+2021-04-16 13:54:53 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_anlab_logo.png_20210416135453' 
+2021-04-16 13:55:54 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 13:55:54 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_3503597_L2.jpg_20210416135554' 
+2021-04-16 13:58:57 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 13:58:57 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_anlab_logo.png_20210416135857' 
+2021-04-16 14:02:33 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:02:33 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_test_20200904.jpg_20210416140233' 
+2021-04-16 14:08:39 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:08:39 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_3505540_L.jpg_20210416140839' 
+2021-04-16 14:11:27 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:11:27 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_3503597_L2.jpg_20210416141127' 
+2021-04-16 14:14:12 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:14:12 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_anlab_logo.png_20210416141412' 
+2021-04-16 14:15:14 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:15:14 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_3505540_L.jpg_20210416141514' 
+2021-04-16 14:16:13 - ERROR: token error: JsonWebTokenError: invalid token 
+2021-04-16 14:16:13 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:16:13 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_3503676_L.jpg_20210416141613' 
+2021-04-16 14:18:15 - ERROR: Error: ENOENT: no such file or directory, open 'C:\Users\duvut\Documents\CODE\sample\InvoiceRecognitionClinet\server\downloads\result_3503676_L.jpg_20210416141815' 
+2021-04-16 14:19:03 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:20:42 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:23:11 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 14:27:57 - ERROR: SequelizeValidationError: notNull Violation: Recognite.FileResult cannot be null 
+2021-04-16 14:29:20 - ERROR: SequelizeValidationError: notNull Violation: Recognite.FileResult cannot be null 
+2021-04-16 14:30:01 - ERROR: SequelizeValidationError: notNull Violation: Recognite.FileResult cannot be null 
+2021-04-16 14:33:28 - ERROR: SequelizeDatabaseError: Column 'Id' cannot be null 
+2021-04-16 14:34:45 - ERROR: SequelizeDatabaseError: Field 'Id' doesn't have a default value 
+2021-04-16 15:13:55 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:13:55 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:17:15 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:17:15 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:17:43 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:17:43 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:28:20 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:28:20 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:39:00 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:41:40 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:42:05 - ERROR: JsonWebTokenError: invalid token 
+2021-04-16 15:47:52 - ERROR: SyntaxError: Unexpected token o in JSON at position 1 
+2021-04-16 15:52:31 - ERROR: SyntaxError: Unexpected token o in JSON at position 1 
+2021-04-16 16:06:06 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 
+2021-04-16 16:06:11 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 

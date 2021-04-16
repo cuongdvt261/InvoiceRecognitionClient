@@ -1,2 +1,2 @@
-export * from './process.service'
+export * from './recognite.service'
 export * from './user.service'

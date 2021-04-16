@@ -15,7 +15,7 @@ import { ReturnCode } from '@/helper/enums.helper'
 @Module
 export default class AuthModule extends VuexModule {
   status = ''
-  token = localStorage.getItem('userSessionInfo') || ''
+  token = localStorage.userSessionInfo ? JSON.parse(localStorage.userSessionInfo)[Constants.TAG_TOKEN] : ''
   hasLoadedOnce = false
 
   @Mutation
@@ -65,11 +65,11 @@ export default class AuthModule extends VuexModule {
     localStorage.removeItem('userSessionInfo')
   }
 
-  get isAuthenticated (): boolean {
+  get isAuthenticated () {
     return !!this.token
   }
 
-  get authStatus (): string {
+  get authStatus () {
     return this.status
   }
 }

@@ -1,4 +1,3 @@
-
 <template>
   <div class="container-fluid" ref="container">
     <br/>
@@ -13,14 +12,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
+
 import Upload from '../components/Upload.vue'
 import Header from '../components/Header.vue'
 import DisplayResult from '../components/DisplayResult.vue'
-import ProcessService from '../services/process.service'
+import RecogniteService from '../services/recognite.service'
 import { TableObject } from '../models/tables'
-import 'vue-loading-overlay/dist/vue-loading.css'
-
-const processServer = new ProcessService()
 
 Vue.use(Loading)
 @Component({
@@ -39,12 +37,15 @@ export default class Home extends Vue {
   }
 
   onSendfile (files: any) : void {
+    const recogniteService = new RecogniteService()
+
     const loader = this.$loading.show({
       container: this.$refs.container,
       canCancel: false
     })
-    processServer.upload(files).then(res => {
-      if (res.result.ok === 1) {
+
+    recogniteService.upload(files, JSON.stringify(this.$store.state.auth.token)).then(res => {
+      if (res.status === 1) {
         loader.hide()
         this.refresh()
       }
@@ -52,9 +53,11 @@ export default class Home extends Vue {
   }
 
   refresh (): TableObject[] {
-    // processServer.results().then(res => {
-    //   this.items = Array.from(res) as TableObject[]
-    // })
+    const recogniteService = new RecogniteService()
+
+    recogniteService.selectAllRecogByUser(JSON.stringify(this.$store.state.auth.token)).then(res => {
+      this.items = Array.from(res.recogs) as TableObject[]
+    })
     return []
   }
 }

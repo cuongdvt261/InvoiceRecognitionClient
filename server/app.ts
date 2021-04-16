@@ -3,6 +3,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 
 import Routes from './src/routes/routes';
+import appConfig from '@/config/app.config';
+import path from 'path';
 
 dotenv.config({path: `${__dirname}/.env`});
 
@@ -31,6 +33,9 @@ class App {
 
     // use route
     this.express.use('/api', Routes);
+    console.log(path.join(__dirname, appConfig.download_dir))
+    this.express.use('/download', express.static(path.resolve(__dirname, appConfig.download_dir)));
+    this.express.use('/upload', express.static(appConfig.upload_dir));
 
     // handle undefined routes
     this.express.use('*', (req, res, next) => {

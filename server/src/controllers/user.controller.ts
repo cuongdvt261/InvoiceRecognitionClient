@@ -39,6 +39,7 @@ export class UserController implements IController {
         const token = jwt.sign({ Username: username }, appConfig.privateKey, {
           expiresIn: 86400
         });
+        console.log('user token: ' + token)
         res.status(HttpStatus.OK).send({ status: 1, token: token });
       } else {
         res.status(HttpStatus.NOT_FOUND).send({ status: 3 });

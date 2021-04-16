@@ -2,6 +2,7 @@ import { Sequelize } from "sequelize-typescript";
 import dbConfig from "@/config/db.config";
 import { Dialect } from "sequelize/types";
 import { User } from "./user.model";
+import { Recognite } from "./recognite.model";
 
 const sequelize = new Sequelize({
     host: dbConfig.HOST,
@@ -11,10 +12,7 @@ const sequelize = new Sequelize({
     dialect: dbConfig.dialect as Dialect,
     storage: ":memory:",
     pool: dbConfig.pool,
-    models: [User],
-    modelMatch: (filename, member) => {
-        return filename.substring(0, filename.indexOf('model')) === member.toLowerCase();
-    }
+    models: [User, Recognite]
 });
 
 export default sequelize;

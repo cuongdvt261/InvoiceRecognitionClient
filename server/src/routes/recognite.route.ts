@@ -6,6 +6,8 @@ import HttpStatus from 'http-status-codes';
 
 import { InvoiceRecognitionController } from '../controllers/recognition.controller';
 import { Logger } from '../lib/logger.lib';
+import appConfig from '@/config/app.config';
+import moment from 'moment';
 
 class RecogniteRoute {
   private readonly multer: multer.Multer;
@@ -28,10 +30,10 @@ class RecogniteRoute {
   private store(): multer.StorageEngine {
     return multer.diskStorage({
       destination(req, file, cb) {
-        cb(null, process.env.HOME_DIR || 'uploads/');
+        cb(null, appConfig.upload_dir);
       },
       filename(req, file, cb) {
-        cb(null, file.originalname);
+        cb(null, file.originalname.replace('.', `_${moment(Date.now()).format('YYYYMMDDHHmmss')}.`));
       },
     });
   }
@@ -41,7 +43,7 @@ class RecogniteRoute {
     const upload = this.multer.single('image');
 
     // Handle invoice recognition
-    this.express.post('/upload', (req, res, next) => {
+    this.express.post('/', (req, res, next) => {
       upload(req, res, (err: any): void => {
         // Handle error
         if (err instanceof multer.MulterError) {
@@ -62,7 +64,7 @@ class RecogniteRoute {
     });
 
     // Get all results
-    this.express.get('/results', (req, res, next) => {
+    this.express.get('/all', (req, res, next) => {
       controller.get(req, res)
         .then(() => { })
         .catch((err) => {

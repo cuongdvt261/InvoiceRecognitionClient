@@ -16,6 +16,9 @@ const appConfig = {
   server: {
     port: CommonHelper.normalizePort(process.env.SERVER_PORT || defaults.server.port),
   },
+  upload_dir: process.env.HOME_DIR || 'uploads/',
+  download_dir: process.env.HOME_DIR || 'downloads/',
+  ws_url: 'ws://127.0.0.1:9999',
   privateKey: 'FsgvPuR2lr'
 };
 

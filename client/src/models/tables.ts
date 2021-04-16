@@ -1,6 +1,10 @@
 export interface TableObject {
-    id: number,
-    fileUpload: string,
-    dateTime: string,
-    fileDownload: string
+    Id: number,
+    FileUpload: string,
+    Description: string,
+    FileResult: string,
+    creationDate: Date,
+    deletionDate: Date,
+    updatedAt: Date,
+    IsDeleted: boolean,
 }
