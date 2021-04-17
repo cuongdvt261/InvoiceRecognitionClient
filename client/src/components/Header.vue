@@ -35,11 +35,6 @@ import { AUTH_LOGOUT_ACTION } from '../store/actions/auth'
   }
 })
 export default class Header extends Vue {
-  constructor () {
-    super()
-    console.log('auth: ' + this.$store.getters.isAuthenticated)
-  }
-
   logout () {
     this.$store.dispatch(AUTH_LOGOUT_ACTION).then(() => {
       this.$router.push('/login')

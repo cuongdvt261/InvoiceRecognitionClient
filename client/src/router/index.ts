@@ -49,6 +49,7 @@ const routes: Array<RouteConfig> = [
     path: '/about',
     name: 'About',
     component: About,
+    beforeEnter: ifAuthenticated,
     meta: {
       title: 'About Page - Invoice Recognation System'
     }

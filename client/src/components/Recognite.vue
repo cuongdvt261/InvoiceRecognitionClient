@@ -21,6 +21,8 @@ import DisplayResult from './DisplayResult.vue'
 import RecogniteService from '../services/recognite.service'
 import { TableObject } from '../models/tables'
 import { mapGetters } from 'vuex'
+import { ReturnCode } from '@/helper/enums.helper'
+import { AUTH_LOGOUT_ACTION } from '@/store/actions/auth'
 
 Vue.use(Loading)
 @Component({
@@ -41,6 +43,7 @@ export default class Home extends Vue {
     this.refresh()
   }
 
+  // Request send PDF file
   onSendfile (files: any) : void {
     const recogniteService = new RecogniteService()
 
@@ -57,13 +60,33 @@ export default class Home extends Vue {
     })
   }
 
-  refresh (): TableObject[] {
+  // Fill recognite result to table
+  refresh () {
     const recogniteService = new RecogniteService()
 
-    recogniteService.selectAllRecogByUser(JSON.stringify(this.$store.state.auth.token)).then(res => {
-      this.items = Array.from(res.recogs) as TableObject[]
-    })
-    return []
+    recogniteService.selectAllRecogByUser(JSON.stringify(this.$store.state.auth.token))
+      .then(res => {
+        if (res.status === ReturnCode.PermissionDenined) {
+          this.$store.dispatch(AUTH_LOGOUT_ACTION).then(() => {
+            this.$router.push('/login')
+          })
+        } else {
+          (Array.from(res.recogs) as TableObject[]).forEach(item => {
+            this.items.push({
+              Id: item.Id,
+              FileUpload: item.FileUpload,
+              FileUploadUrl: `${[process.env.VUE_APP_SERVER_URL!, 'upload', item.FileUpload].join('/')}`,
+              Description: item.Description,
+              FileResult: item.FileResult,
+              FileResultUrl: `${[process.env.VUE_APP_SERVER_URL!, 'download', item.FileResult].join('/')}`,
+              creationDate: item.creationDate,
+              deletionDate: item.deletionDate,
+              updatedAt: item.updatedAt,
+              IsDeleted: item.IsDeleted
+            })
+          })
+        }
+      })
   }
 }
 </script>

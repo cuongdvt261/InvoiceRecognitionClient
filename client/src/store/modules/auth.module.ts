@@ -33,6 +33,7 @@ export default class AuthModule extends VuexModule {
   @Mutation
   [AUTH_ERROR] () {
     this.status = 'error'
+    this.token = ''
   }
 
   @Mutation
@@ -62,25 +63,6 @@ export default class AuthModule extends VuexModule {
   @Action({ commit: AUTH_LOGOUT })
   [AUTH_LOGOUT_ACTION] () {
     localStorage.removeItem('userSessionInfo')
-  }
-
-  @Action
-  [AUTH_AUTO_LOGIN_ACTION] () {
-    const userService = new UserService()
-    userService.autoLogin(this.token)
-      .then(res => {
-        if (res.status === ReturnCode.Success) {
-          const userSessionInfo = {
-            [Constants.TAG_TOKEN]: res[Constants.TAG_TOKEN]
-          }
-          localStorage.setItem('userSessionInfo', JSON.stringify(userSessionInfo))
-          this.context.commit(AUTH_SUCCESS, userSessionInfo)
-        }
-      })
-      .catch(err => {
-        this.context.commit(AUTH_ERROR, err)
-        localStorage.removeItem('userSessionInfo')
-      })
   }
 
   get isAuthenticated () {

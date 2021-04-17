@@ -3,6 +3,10 @@
     <div class="col-md-10 offset-1">
       <b-table
         striped
+        bordered
+        fixed
+        responsive
+        small
         hover
         id="table-info"
         :fields="fields"
@@ -11,7 +15,11 @@
         :current-page="currentPage"
       >
         <template #cell(FileUpload)="data">
-          <b-link @click="redirectTo(data.item.FileUpload)" target="_blank">{{ data.item.FileUpload }}</b-link>
+          <b-link :href="data.item.FileUploadUrl" target="_blank">{{ data.item.FileUpload }}</b-link>
+        </template>
+
+        <template #cell(FileResult)="data">
+          <b-link :href="data.item.FileResultUrl" target="_blank">{{ data.item.FileResult }}</b-link>
         </template>
       </b-table>
     </div>
@@ -30,23 +38,17 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { TableObject } from '../models/tables'
-import path from 'path'
 
 @Component
 export default class Home extends Vue {
   @Prop({ type: Array, required: true })
   tableInfo!: TableObject[]
 
-  downloadUrl = process.env.VUE_APP_SERVER_URL
   currentPage = 1
   perPage = 3
 
   get rows () : number {
     return this.tableInfo.length
-  }
-
-  redirectTo (file: string) {
-    window.open(path.resolve(process.env.VUE_APP_SERVER_URL || 'http://localhost:3000', 'upload', file))
   }
 
   fields: string[] = ['Id', 'FileUpload', 'FileResult', 'creationDate']
