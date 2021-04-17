@@ -14,7 +14,7 @@
       <li v-if="isAuthenticated" @click="logout">
         <span class="logout">Logout</span>
       </li>
-      <li v-if="!isAuthenticated && !authLoading">
+      <li v-if="!isAuthenticated">
         <router-link to="/login">Login</router-link>
       </li>
     </ul>
@@ -25,18 +25,21 @@
 import { mapGetters, mapState } from 'vuex'
 import { Component, Vue } from 'vue-property-decorator'
 import { AUTH_LOGOUT_ACTION } from '../store/actions/auth'
-import router from '../router'
 
 @Component({
   computed: {
-    ...mapGetters<string>(['isAuthenticated', 'authStatus']),
+    ...mapGetters<string>(['isAuthenticated']),
     ...mapState({
-      authLoading: (state: any) => state.authStatus === 'loading',
-      name: (state: any) => `${state.user.profile.title} ${state.user.profile.name}`
+      authLoading: (state: any) => state.auth.status === 'loading'
     })
   }
 })
 export default class Header extends Vue {
+  constructor () {
+    super()
+    console.log('auth: ' + this.$store.getters.isAuthenticated)
+  }
+
   logout () {
     this.$store.dispatch(AUTH_LOGOUT_ACTION).then(() => {
       this.$router.push('/login')
