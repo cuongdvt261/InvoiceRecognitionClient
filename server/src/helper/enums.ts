@@ -4,15 +4,15 @@ enum ReturnCode {
     Warning = 2,
     Error_ = 3,
     Empty = 4,
-    Error_Select = 5,
+    ErrorSelect = 5,
     Duplicate = 6,
-    Format_Incorrect = 7,
-    Error_Open_File = 8,
-    File_Not_Exist = 9,
-    File_Exist = 10,
-    Over_Size = 11,
-    Not_Ready = 12,
-    Permission_denined = 13,
+    FormatIncorrect = 7,
+    ErrorOpenFile = 8,
+    FileNotExist = 9,
+    FileExist = 10,
+    OverSize = 11,
+    NotReady = 12,
+    PermissionDenined = 13,
 }
 
 enum DetectResultEnum {

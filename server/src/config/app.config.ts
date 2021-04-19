@@ -18,7 +18,7 @@ const appConfig = {
   },
   upload_dir: process.env.HOME_DIR || 'uploads/',
   download_dir: process.env.HOME_DIR || 'downloads/',
-  ws_url: 'ws://127.0.0.1:9999',
+  ws_url: 'ws://192.168.1.69:9999',
   privateKey: 'FsgvPuR2lr'
 };
 

@@ -59,3 +59,39 @@
 2021-04-16 15:52:31 - ERROR: SyntaxError: Unexpected token o in JSON at position 1 
 2021-04-16 16:06:06 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 
 2021-04-16 16:06:11 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 
+2021-04-19 15:03:49 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 
+2021-04-19 15:05:31 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:06:29 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:07:02 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:08:07 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:08:12 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:09:34 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:12:29 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:13:15 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:13:35 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:14:25 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:19:52 - ERROR: TokenExpiredError: jwt expired 
+2021-04-19 15:20:05 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:21:43 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:24:38 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:24:56 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:26:44 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:29:55 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:30:25 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:30:45 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:32:39 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:34:08 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:34:43 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:35:31 - ERROR: JsonWebTokenError: jwt must be provided 
+2021-04-19 15:36:41 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 
+2021-04-19 15:36:41 - ERROR: TypeError: Cannot read property 'Username' of null 
+2021-04-19 15:36:47 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 
+2021-04-19 15:36:47 - ERROR: TypeError: Cannot read property 'Username' of null 
+2021-04-19 15:37:09 - ERROR: SyntaxError: Unexpected token e in JSON at position 0 
+2021-04-19 15:37:09 - ERROR: TypeError: Cannot read property 'Username' of null 
+2021-04-19 16:04:33 - ERROR: TypeError: Cannot read property 'filename' of undefined 
+2021-04-19 16:08:15 - ERROR: Error: Can't send data because WebSocket is not opened. 
+2021-04-19 16:09:43 - ERROR: Error: Can't send data because WebSocket is not opened. 
+2021-04-19 16:10:47 - ERROR: Error: Can't send data because WebSocket is not opened. 
+2021-04-19 16:11:20 - ERROR: Error: Can't send data because WebSocket is not opened. 
+2021-04-19 16:13:23 - ERROR: Error: Can't send data because WebSocket is not opened. 

@@ -45,7 +45,7 @@ export default class Home extends Vue {
   tableInfo!: TableObject[]
 
   currentPage = 1
-  perPage = 3
+  perPage = 10
 
   get rows () : number {
     return this.tableInfo.length

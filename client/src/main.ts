@@ -18,6 +18,7 @@ Vue.use(IconsPlugin)
 
 // Auto authentication
 const token = localStorage.getItem('userSessionInfo')
+console.log('token: ' + token)
 if (token) {
   axios.defaults.headers.common['x-access-token'] = JSON.parse(token)[Constants.TAG_TOKEN]
 }

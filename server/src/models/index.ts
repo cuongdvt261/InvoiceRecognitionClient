@@ -12,7 +12,8 @@ const sequelize = new Sequelize({
     dialect: dbConfig.dialect as Dialect,
     storage: ":memory:",
     pool: dbConfig.pool,
-    models: [User, Recognite]
+    models: [User, Recognite],
+    logging: false
 });
 
 export default sequelize;

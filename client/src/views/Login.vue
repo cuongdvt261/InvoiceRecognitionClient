@@ -62,6 +62,7 @@ export default class Login extends Vue {
   }
 
   doLogin () : void {
+    console.log('localStorage: ' + localStorage.getItem('userSessionInfo'))
     if (this.user === '' || this.password === '') {
       this.emptyFields = true
     } else {
@@ -69,6 +70,7 @@ export default class Login extends Vue {
         this.$router.push({ path: '/' })
       })
     }
+    console.log('localStorage: ' + localStorage.getItem('userSessionInfo'))
   }
 
   doRegister () {

@@ -6,12 +6,12 @@ import {
   AUTH_SUCCESS,
   AUTH_LOGOUT,
   AUTH_REQUEST_ACTION,
-  AUTH_LOGOUT_ACTION,
-  AUTH_AUTO_LOGIN_ACTION
+  AUTH_LOGOUT_ACTION
 } from '../actions/auth'
 import Constants from '@/helper/constants'
 import UserService from '@/services/user.service'
 import { ReturnCode } from '@/helper/enums.helper'
+import axios from 'axios'
 
 @Module
 export default class AuthModule extends VuexModule {
@@ -27,6 +27,7 @@ export default class AuthModule extends VuexModule {
   @Mutation
   [AUTH_SUCCESS] (resp: any) {
     this.status = 'success'
+    console.log('resp.token: ' + JSON.stringify(resp.token))
     this.token = resp.token
   }
 
@@ -51,6 +52,7 @@ export default class AuthModule extends VuexModule {
             [Constants.TAG_TOKEN]: res[Constants.TAG_TOKEN]
           }
           localStorage.setItem('userSessionInfo', JSON.stringify(userSessionInfo))
+          axios.defaults.headers.common['x-access-token'] = res[Constants.TAG_TOKEN]
           this.context.commit(AUTH_SUCCESS, userSessionInfo)
         }
       })

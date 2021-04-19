@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import { IController } from './controller.interface';
 import { User } from "@/models/user.model";
 import appConfig from '@/config/app.config';
+import { Logger } from '@/lib/logger.lib';
 
 export class AuthController implements IController {
   public delete(req: Request, res: Response) {
@@ -46,6 +47,16 @@ export class AuthController implements IController {
       console.log('token auth: ' + token);
       res.status(HttpStatus.OK).send({ status: 1, token: token });
       return
+    }
+  }
+
+  public static isValidToken(token: string) : boolean {
+    try {
+      const obj = jwt.verify(token, appConfig.privateKey)
+      return obj ? true : false
+    } catch (err) {
+      Logger.getInstance().error(err)
+      return false
     }
   }
 }

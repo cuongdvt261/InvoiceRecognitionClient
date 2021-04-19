@@ -8,6 +8,8 @@ import { InvoiceRecognitionController } from '../controllers/recognition.control
 import { Logger } from '../lib/logger.lib';
 import appConfig from '@/config/app.config';
 import moment from 'moment';
+import { AuthController } from '@/controllers/auth.controller';
+import { ReturnCode } from '@/helper/enums';
 
 class RecogniteRoute {
   private readonly multer: multer.Multer;
@@ -44,32 +46,43 @@ class RecogniteRoute {
 
     // Handle invoice recognition
     this.express.post('/', (req, res, next) => {
-      upload(req, res, (err: any): void => {
-        // Handle error
-        if (err instanceof multer.MulterError) {
-          res.json(err);
-          res.statusCode = HttpStatus.NOT_ACCEPTABLE;
-        } else if (err) {
-          res.json(err);
-          res.statusCode = HttpStatus.NOT_FOUND;
-        }
+      const token = req.headers['x-access-token'] as string
+      if (AuthController.isValidToken(token)) {
+        upload(req, res, (err: any): void => {
+          // Handle error
+          if (err instanceof multer.MulterError) {
+            res.json(err);
+            res.statusCode = HttpStatus.NOT_ACCEPTABLE;
+          } else if (err) {
+            res.json(err);
+            res.statusCode = HttpStatus.NOT_FOUND;
+          }
 
-        // Handle file input
-        controller.post(req, res)
-          .then(() => { })
-          .catch((err) => {
-            Logger.getInstance().error(err);
-          });
-      });
+          // Handle file input
+          controller.post(req, res)
+            .then(() => { })
+            .catch((err) => {
+              Logger.getInstance().error(err);
+            });
+        });
+      } else {
+        res.status(HttpStatus.OK).json({ status: ReturnCode.PermissionDenined })
+      }
     });
 
     // Get all results
     this.express.get('/all', (req, res, next) => {
-      controller.get(req, res)
+      const token = req.headers['x-access-token'] as string
+      console.log('token: ' + token)
+      if (AuthController.isValidToken(token)) {
+        controller.get(req, res)
         .then(() => { })
         .catch((err) => {
           Logger.getInstance().error(err);
         });
+      } else {
+        res.status(HttpStatus.OK).json({ status: ReturnCode.PermissionDenined })
+      }
     });
   }
 }

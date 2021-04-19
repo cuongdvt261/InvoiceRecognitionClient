@@ -18,6 +18,6 @@ export default class RecogniteService {
         'Content-Type': 'application/json'
       }
     })
-    return await res.data
+    return res.data
   }
 }

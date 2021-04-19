@@ -6,7 +6,7 @@
         <h1>Upload PDF file</h1>
         <div class="dropbox">
           <input type="file" @change="filesChange($event.target.files)"
-            accept="image/*,application/pdf" class="input-file">
+            accept="application/pdf" class="input-file">
             <p v-if="isInitial">
               Drag your file(s) here to begin<br> or click to browse
             </p>

@@ -17,24 +17,13 @@ export class InvoiceRecognitionController implements IController {
   wsp: WebSocketAsPromised
 
   constructor() {
-    // // test token
-    // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6InRlc3QiLCJpYXQiOjE2MTg1NTY0MTUsImV4cCI6MTYxODY0MjgxNX0.o0bdslkuWzLXJiOAcNaINuDL2MSZnmkzC2WQKhzOLrU";
-    // jwt.verify(token, appConfig.privateKey, async (err, decode) => {
-    //   if (err) {
-    //     console.log(err)
-    //   }
-    //   console.log((decode! as any).Username)
-    //   User.findOne({ where: { Username: (decode! as any).Username } }).then(user => {
-    //     console.log(user)
-    //   })
-    // })
-
     this.wsp = new WebSocketAsPromised(appConfig.ws_url, {
       packMessage: data => JSON.stringify(data),
       unpackMessage: data => JSON.parse(data as string),
       attachRequestId: (data, requestId) => Object.assign({ id: requestId }, data), // attach requestId to message as `id` field
       extractRequestId: data => data && data.id,
     })
+    this.wsp.send('message')
   }
 
   public delete(req: Request, res: Response) {
@@ -47,37 +36,31 @@ export class InvoiceRecognitionController implements IController {
 
   public async get(req: Request, res: Response) {
     const token = req.headers['x-access-token']
-    const tokenStr = this.isValidToken(token as string)
-    if (!tokenStr) {
-      res.status(HttpStatus.FORBIDDEN).send({ status: 3 })
-      return
-    }
-
+    const tokenStr = this.getToken(token as string)
     const recogs = await Recognite.findAll({where: {Username: (tokenStr as any).Username}})
     res.status(HttpStatus.OK).send({ status: 1, recogs: recogs})
   }
 
   public async post(req: Request, res: Response): Promise<void> {
     const token = req.headers['x-access-token']
+    const tokenStr = this.getToken(token as string)
 
-    const tokenStr = this.isValidToken(token as string)
-    if (!tokenStr) {
-      res.status(HttpStatus.FORBIDDEN).send({ status: 3 })
+    // Get recognite result
+    const obj = await this.sendRecogniteToWS(req.file.filename)
+    if (!obj) {
+      console.log("AAAAAA")
       return
     }
 
-    // // Get recognite result
-    // await this.sendRecogniteToWS(req.file.filename)
-
     // Save result file - Fake json
     const fakeResponse = {
-      "0": ["123", "456.789", "153.789"],
-      "1": ["1", "2", "3", "4"],
-      "2": ["2312", "21.4234", "4.325.635"]
+      "1": [["1", "1", "153.789"], ["1", "2", "23456"], ["12", "14", "12213"]],
+      "2": [["1", "1", "153.789"], ["1", "2", "23456"], ["12", "14", "12213"]],
+      "3": [["1", "1", "153.789"], ["1", "2", "23456"], ["12", "14", "12213"]]
     }
 
     // Save result file
-    const downloadFilename = `result_${req.file.originalname.split('.').slice(0, -1)}_${moment(Date.now()).format('YYYYMMDDHHmmss')}.csv`
+    const downloadFilename = `result_${req.file.originalname.split('.').slice(0, -1)}_${moment(Date.now()).format('YYMMDDHHmm')}.csv`
     const fileDownload = this.saveCsvFile(fakeResponse, downloadFilename)
     console.log(fileDownload)
 
@@ -97,8 +80,8 @@ export class InvoiceRecognitionController implements IController {
     }
   }
 
-  private async sendRecogniteToWS(fiename: string) {
-    const fileUploadPath = path.join(appConfig.upload_dir, fiename);
+  private async sendRecogniteToWS(filename: string) {
+    const fileUploadPath = path.join(appConfig.upload_dir, filename);
     const base64data = await this.base64Encode(fileUploadPath)
     if (base64data) {
       const reqObj = {
@@ -108,7 +91,7 @@ export class InvoiceRecognitionController implements IController {
         [Constants.TAG_SEQ_NO]: 0,
         [Constants.TAG_NUMBER_PART]: 0,
         [Constants.TAG_CONTENT]: {
-          [Constants.TAG_NAME]: fiename,
+          [Constants.TAG_NAME]: filename,
           [Constants.TAG_MODE_DATA]: FileType.PDF,
           [Constants.TAG_SIZE]: base64data.length,
           [Constants.TAG_CONTENT]: base64data
@@ -116,7 +99,7 @@ export class InvoiceRecognitionController implements IController {
       }
 
       // Send to process server
-      this.sendRequest(reqObj).then(res => { })
+      return await this.sendRequest(reqObj)
     }
   }
 
@@ -129,9 +112,9 @@ export class InvoiceRecognitionController implements IController {
     })
   }
 
-  private isValidToken(token: string): string | object | null {
+  private getToken(token: string): string | object | null {
     try {
-      const obj = jwt.verify(JSON.parse(token), appConfig.privateKey)
+      const obj = jwt.verify(token, appConfig.privateKey)
       return obj ? obj : null
     } catch (err) {
       Logger.getInstance().error(err)
@@ -142,7 +125,7 @@ export class InvoiceRecognitionController implements IController {
   private sendRequest(reqObj: any) {
     return this.wsp.sendRequest(reqObj).then(response => {
       return new Promise((resolve, reject) => {
-        if (response[Constants.TAG_CONTENT][Constants.TAG_ERROR_CODE] == ReturnCode.Permission_denined) {
+        if (response[Constants.TAG_CONTENT][Constants.TAG_ERROR_CODE] == ReturnCode.PermissionDenined) {
           reject()
         } else {
           resolve(response);
@@ -154,8 +137,8 @@ export class InvoiceRecognitionController implements IController {
   private saveCsvFile(obj: {}, filename: string): string | undefined {
     let arr: string[] = []
     for (const [key, value] of Object.entries(obj)) {
-      (value as string[]).forEach(item => {
-        arr.push(`${key},${item}`)
+      (value as string[][]).forEach(item => {
+        arr.push(`${key},${item.join(',')}`)
       })
     }
     try {

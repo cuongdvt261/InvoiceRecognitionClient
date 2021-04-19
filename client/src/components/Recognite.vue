@@ -66,6 +66,8 @@ export default class Home extends Vue {
 
     recogniteService.selectAllRecogByUser(JSON.stringify(this.$store.state.auth.token))
       .then(res => {
+        this.items = []
+        console.log('res: ' + res)
         if (res.status === ReturnCode.PermissionDenined) {
           this.$store.dispatch(AUTH_LOGOUT_ACTION).then(() => {
             this.$router.push('/login')
